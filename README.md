@@ -26,7 +26,7 @@ local hooks. One of my two agents has pre-commit hooks; the other does not. A co
 lives in a hook covers one of them.
 
 This repository is the general version of those checks. In the private repository where
-they started, the pointer and claims checks have run on every push since September 2026.
+they started, the pointer and claims checks have run on every push since 31 August 2026.
 **G5, commits against claims, is new in this extraction** and has not run there yet.
 
 ## What it checks
