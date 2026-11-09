@@ -1,0 +1,13 @@
+[rules]
+canonical = "RULES.md"
+
+[adapters]
+files = ["CLAUDE.md", "AGENTS.md", "GEMINI.md", ".github/copilot-instructions.md"]
+required = ["CLAUDE.md", "AGENTS.md"]
+max_lines = 20
+
+[claims]
+file = "coordination/claims.toml"
+agents = ["claude", "codex"]
+commit_tag = '^\[(?P<agent>[a-z0-9-]+)\]'
+untagged = "warn"

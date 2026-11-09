@@ -1,0 +1,18 @@
+# Active and past claims on this repository.
+#
+# Before structural or multi-area work, an agent adds a claim here and commits it.
+# Two agents claiming overlapping areas produce a git conflict or a CI failure:
+# the collision becomes visible instead of silent. Close the claim in the change
+# that finishes the work; an expired active claim fails CI until renewed or closed.
+#
+# area    path prefix, compared by directory segment ("src/bill" does not cover
+#         "src/billing"); "*" claims the whole repository
+# status  active | closed -- closed claims are history and never fail the build
+
+[[claim]]
+area = "*"
+agent = "claude"
+scope = "initial extraction: checks G1-G5, tests, CI"
+since = 2026-11-09
+expires = 2026-11-10
+status = "closed"

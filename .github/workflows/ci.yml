@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # G5 walks the commits of the range
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The checker is tested before it is trusted: if it cannot catch a broken
+      # repository, its green on this one means nothing.
+      - name: Test the checker
+        run: python -m unittest discover -s tests -v
+
+      - name: Govern this repository (G1-G4)
+        run: python agentgov.py
+
+      - name: Commits of the pull request against active claims (G5)
+        if: github.event_name == 'pull_request'
+        run: python agentgov.py --range "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
